@@ -53,40 +53,40 @@
                                     <table id="order-table" class="table table-striped table-bordered nowrap">
                                       <thead>
                                         <tr>
-                                          <th>Name</th>
-                                          <th>Position</th>
-                                          <th>Office</th>
-                                          <th>Age</th>
-                                          <th>Start date</th>
-                                          <th>Salary</th>
+                                            <th>No. </th>
+                                            <th>Pegawai</th>
+                                            <th>Username</th>
+                                            <th>Tanggal Registrasi</th>
+                                            <th>Aksi</th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr>
-                                          <td>Bradley Greer</td>
-                                          <td>Software Engineer</td>
-                                          <td>London</td>
-                                          <td>41</td>
-                                          <td>2012/10/13</td>
-                                          <td>$132,000</td>
-                                        </tr>
-                                        <tr>
-                                          <td>Dai Rios</td>
-                                          <td>Personnel Lead</td>
-                                          <td>Edinburgh</td>
-                                          <td>35</td>
-                                          <td>2012/09/26</td>
-                                          <td>$217,500</td>
-                                        </tr>
+                                        <?php $index = 1; ?>
+                                        @foreach ($pegawais as $pegawai)
+                                            <tr>
+                                                <td>{{ $index++ }}</td>
+                                                <td>
+                                                    {{ $pegawai->name }} <br>
+                                                    (<small>{{ $pegawai->nip }}</small>)
+                                                </td>
+                                                <td>{{ $pegawai->username }}</td>
+                                                <td>{{ $pegawai->created_at }}</td>
+                                                <td>
+                                                    <i class="ti-pencil text-success" style="font-size: 18px"></i>
+                                                    <i class="ti-trash text-danger" style="font-size: 18px"></i>
+                                                    {{-- <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
+                                                    <i class="fa fa-trash-o text-danger" aria-hidden="true"></i> --}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                       </tbody>
                                       <tfoot>
                                         <tr>
-                                          <th>Name</th>
-                                          <th>Position</th>
-                                          <th>Office</th>
-                                          <th>Age</th>
-                                          <th>Start date</th>
-                                          <th>Salary</th>
+                                            <th>No. </th>
+                                            <th>Pegawai</th>
+                                            <th>Username</th>
+                                            <th>Tanggal Registrasi</th>
+                                            <th>Aksi</th>
                                         </tr>
                                       </tfoot>
                                     </table>
@@ -108,7 +108,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Tambah Pegawai</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -135,7 +135,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default waves-effect close-btn" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary waves-effect waves-light" id="store">Save changes</button>
         </div>
       </div>
@@ -159,8 +159,6 @@
     <script type="text/javascript" src="{{ asset('assets/bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-i18next/jquery-i18next.min.js') }}"></script>
-
-    <script src="{{ asset('assets/assets/pages/data-table/js/data-table-custom.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/assets/js/sweetalert.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/js/modal.js') }}"></script>

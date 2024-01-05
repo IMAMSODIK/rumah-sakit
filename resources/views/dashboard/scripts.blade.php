@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/bower_components/popper.js/dist/umd/popper.min.js') }}"></script>
@@ -15,5 +16,23 @@
     <script src="{{ asset('assets/assets/js/vartical-layout.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/pages/dashboard/analytic-dashboard.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/js/script.js') }}"></script>
+
+    <script>
+        $("#logout").on("click", function(){
+            $.ajax({
+                url: '/logout',
+                method: 'POST',
+                data: {
+                    "_token": $("meta[name='csrf-token']").attr('content'),
+                },
+                success: function(response){
+                    location.reload();
+                },
+                error: function(response){
+
+                }
+            })
+        })
+    </script>
 
     @yield('own_js')

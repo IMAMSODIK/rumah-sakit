@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Validator;
 class PegawaiController extends Controller
 {
     public function index(){
-        return view('pegawai.index');
+        $listPegawai = User::select('id', 'name', 'foto', 'nip', 'username', 'created_at')->get();
+        return view('pegawai.index', [
+            'pegawais' => $listPegawai
+        ]);
     }
 
     public function store(Request $r){
