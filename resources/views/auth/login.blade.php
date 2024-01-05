@@ -15,11 +15,11 @@
                                     <div class="col-md-12"><h3 class="text-center">Sign In</h3></div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="email" class="form-control" required placeholder="Your Email Address">
+                                    <input type="text" name="username" class="form-control" required placeholder="Masukkan Username">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="password" name="password" class="form-control" required placeholder="Password">
+                                    <input type="password" name="password" class="form-control" required placeholder="Masukkan Password">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="row m-t-25 text-left">

@@ -12,7 +12,7 @@ class AuthController extends Controller
     }
 
     public function loginCheck(Request $r){
-        if(Auth::attempt(['email' => $r->email, 'password' => $r->password])){
+        if(Auth::attempt(['username' => $r->username, 'password' => $r->password])){
             $r->session()->regenerate();
             session()->put('user', Auth::user());
             return redirect('/');

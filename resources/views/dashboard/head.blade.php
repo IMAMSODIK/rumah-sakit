@@ -5,6 +5,7 @@
     <![endif]-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="description" content="#">
 <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
@@ -15,3 +16,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/icon/feather/css/feather.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/css/jquery.mCustomScrollbar.css') }}">
+
+@yield('own_style')

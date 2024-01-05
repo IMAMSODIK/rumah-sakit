@@ -15,3 +15,5 @@
     <script src="{{ asset('assets/assets/js/vartical-layout.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/pages/dashboard/analytic-dashboard.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/js/script.js') }}"></script>
+
+    @yield('own_js')

@@ -10,7 +10,7 @@
         </a>
         <ul class="pcoded-submenu">
           <li class>
-            <a href="../index.html">
+            <a href="/pegawai">
               <span class="pcoded-mtext">Pegawai</span>
             </a>
           </li>
