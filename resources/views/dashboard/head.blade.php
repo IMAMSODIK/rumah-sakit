@@ -16,5 +16,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/icon/feather/css/feather.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/css/jquery.mCustomScrollbar.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.min.css') }}">
 
 @yield('own_style')
