@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\User;
+use App\Models\Pasien;
+use App\Models\JenisLayanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PegawaiController extends Controller
+class PasienController extends Controller
 {
     public function index(){
-        $listPegawai = User::select('id', 'name', 'foto', 'nip', 'username', 'created_at')->get();
-        return view('pegawai.index', [
-            'pegawais' => $listPegawai
+        $pasiens = Pasien::all();
+        $layanans = JenisLayanan::select('id', 'jenis_layanan')->get();
+
+        return view('pasien.index', [
+            'pasiens' => $pasiens,
+            'layanans' => $layanans
         ]);
     }
 
@@ -27,13 +31,17 @@ class PegawaiController extends Controller
         ];
 
         $data = [
-            'name' => $r->nama_pegawai,
-            'nip' => $r->nip
+            "nama" => $r->nama,
+            "kode" => $r->kode,
+            "waktu_masuk" => $r->waktu_masuk,
+            "jenis_layanan_id" => $r->jenis_layanan,
         ];
 
         $rules = [
-            'name' => 'required|string|max:255',
-            'nip' => 'required|string|size:16|unique:users'
+            'nama' => 'required|string|max:255',
+            'kode' => 'required|string|max:255|unique:pasiens',
+            'waktu_masuk' => 'required',
+            'jenis_layanan_id' => 'required'
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -45,14 +53,8 @@ class PegawaiController extends Controller
             ]);
         }
 
-
         try {
-            $data = User::create([
-                'name' => $r->nama_pegawai,
-                'nip' => $r->nip,
-                'username' => $r->nip,
-                'password' => bcrypt($r->nip)
-            ]);
+            $data = Pasien::create($data);
 
             if($data){
                 return response()->json([
@@ -74,7 +76,7 @@ class PegawaiController extends Controller
     }
 
     public function edit(Request $r){
-        $data = User::where('id', $r->id)->first();
+        $data = Pasien::where('id', $r->id)->first();
 
         if($data){
             return response()->json([
@@ -100,13 +102,17 @@ class PegawaiController extends Controller
         ];
 
         $data = [
-            'name' => $r->nama_pegawai,
-            'nip' => $r->nip
+            "nama" => $r->nama,
+            "kode" => $r->kode,
+            "waktu_masuk" => $r->waktu_masuk,
+            "jenis_layanan_id" => $r->jenis_layanan,
         ];
 
         $rules = [
-            'name' => 'required|string|max:255',
-            'nip' => 'required|string|size:16|unique:users,nip,'.$r->id
+            'nama' => 'required|string|max:255',
+            'kode' => 'required|string|max:255|unique:pasiens',
+            'waktu_masuk' => 'required',
+            'jenis_layanan_id' => 'required'
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -118,13 +124,14 @@ class PegawaiController extends Controller
             ]);
         }
 
-
         try {
-            $data = User::where('id', $r->id)->first();
+            $data = Pasien::where('id', $r->id)->first();
 
             if($data){
-                $data->name = $r->nama_pegawai;
-                $data->nip = $r->nip;
+                $data->kode = $r->kode;
+                $data->nama = $r->nama;
+                $data->waktu_masuk = $r->waktu_masuk;
+                $data->jenis_layanan_id = $r->jenis_layanan;
                 $data->save();
 
                 return response()->json([
@@ -145,7 +152,7 @@ class PegawaiController extends Controller
     }
 
     public function delete(Request $r){
-        $data = User::where('id', $r->id)->first();
+        $data = Pasien::where('id', $r->id)->first();
         if($data){
             try {
                 $data->delete();

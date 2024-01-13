@@ -1,8 +1,8 @@
 let data_table;
 
 function clearFields(){
-    $("#nama").val("");
-    $("#nip").val("");
+    $("#jenis_layanan").val("");
+    $("#keterangan_layanan").val("");
 }
 
 $(document).ready(function() {
@@ -24,16 +24,16 @@ $(".close-btn").on("click", function(){
 
 $("#store").on("click", function(){
     $("#large-Modal").modal('hide');
-    let nama_pegawai = $("#nama").val(),
-        nip = $("#nip").val();
+    let jenis_layanan = $("#jenis_layanan").val(),
+        keterangan_layanan = $("#keterangan_layanan").val();
 
     $.ajax({
-        url: '/pegawai/store-data',
+        url: '/jenis-layanan/store-data',
         method: 'POST',
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
-            "nama_pegawai": nama_pegawai,
-            "nip": nip
+            "jenis_layanan": jenis_layanan,
+            "keterangan_layanan": keterangan_layanan
         },
         success: function(response){
             if(response.status){
@@ -70,16 +70,16 @@ $(".edit").on('click', function(){
     let id = $(this).data('id');
 
     $.ajax({
-        url: '/pegawai/edit-data',
+        url: '/jenis-layanan/edit-data',
         method: 'GET',
         data: {
             "id": id
         },
         success: function(response){
             if(response.status){
-                $("#id_pegawai").val(response.data.id);
-                $("#edit_nama").val(response.data.name);
-                $("#edit_nip").val(response.data.nip);
+                $("#id_layanan").val(response.data.id);
+                $("#edit_jenis_layanan").val(response.data.jenis_layanan);
+                $("#edit_keterangan_layanan").val(response.data.keterangan);
             }else{
                 Swal.fire({
                     title: 'Oops..',
@@ -88,7 +88,7 @@ $(".edit").on('click', function(){
                     confirmButtonText: 'Oke'
                   }).then((result) => {
                     if (result.isConfirmed) {
-                        $("#large-Modal").modal('show');
+
                     }
                 })
             }
@@ -103,13 +103,13 @@ $(".edit").on('click', function(){
 $("#update").on('click', function(){
     $("#edit-Modal").modal('hide');
     $.ajax({
-        url: '/pegawai/update-data',
+        url: '/jenis-layanan/update-data',
         method: 'POST',
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
-            "id": $("#id_pegawai").val(),
-            "nama_pegawai": $("#edit_nama").val(),
-            "nip": $("#edit_nip").val()
+            "id": $("#id_layanan").val(),
+            "jenis_layanan": $("#edit_jenis_layanan").val(),
+            "keterangan_layanan": $("#edit_keterangan_layanan").val()
         },
         success: function(response){
             if(response.status){
@@ -165,7 +165,7 @@ $(".delete").on("click", function(){
       }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: '/pegawai/delete-data',
+                url: '/jenis-layanan/delete-data',
                 method: 'POST',
                 data: {
                     "_token": $("meta[name='csrf-token']").attr('content'),

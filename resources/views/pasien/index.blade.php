@@ -10,6 +10,12 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/css/sweetalert.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/css/component.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets/pages/advance-elements/css/bootstrap-datetimepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/bower_components/datedropper/datedropper.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/bower_components/spectrum/spectrum.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/bower_components/jquery-minicolors/jquery.minicolors.css') }}">
 @endsection
 
 @section('content')
@@ -34,7 +40,7 @@
                                     <li class="breadcrumb-item" style="float: left;">
                                         <a href="/"> <i class="feather icon-home"></i> </a>
                                     </li>
-                                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Daftar Pegawai</a></li>
+                                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Daftar Pasien</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -46,7 +52,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                  <h5>Daftar Pegawai</h5>
+                                  <h5>Daftar Pasien</h5>
                                 </div>
                                 <div class="card-block">
                                   <div class="dt-responsive table-responsive">
@@ -54,28 +60,26 @@
                                       <thead>
                                         <tr>
                                             <th>No. </th>
-                                            <th>Pegawai</th>
-                                            <th>Username</th>
-                                            <th>Tanggal Registrasi</th>
+                                            <th>Pasien</th>
+                                            <th>Waktu Masuk</th>
+                                            <th>Jenis Layanan</th>
                                             <th>Aksi</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                         <?php $index = 1; ?>
-                                        @foreach ($pegawais as $pegawai)
+                                        @foreach ($pasiens as $pasien)
                                             <tr>
                                                 <td>{{ $index++ }}</td>
                                                 <td>
-                                                    {{ $pegawai->name }} <br>
-                                                    (<small>{{ $pegawai->nip }}</small>)
+                                                    {{ $pasien->nama }} <br>
+                                                    <small>({{ $pasien->kode }})</small>
                                                 </td>
-                                                <td>{{ $pegawai->username }}</td>
-                                                <td>{{ $pegawai->created_at }}</td>
+                                                <td>{{ $pasien->waktu_masuk }}</td>
+                                                <td>{{ $pasien->jenisLayanan->jenis_layanan }}</td>
                                                 <td>
-                                                    <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $pegawai->id }}></i>
-                                                    <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $pegawai->id }}></i>
-                                                    {{-- <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
-                                                    <i class="fa fa-trash-o text-danger" aria-hidden="true"></i> --}}
+                                                    <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $pasien->id }}></i>
+                                                    <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $pasien->id }}></i>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -83,9 +87,9 @@
                                       <tfoot>
                                         <tr>
                                             <th>No. </th>
-                                            <th>Pegawai</th>
-                                            <th>Username</th>
-                                            <th>Tanggal Registrasi</th>
+                                            <th>Pasien</th>
+                                            <th>Waktu Masuk</th>
+                                            <th>Jenis Layanan</th>
                                             <th>Aksi</th>
                                         </tr>
                                       </tfoot>
@@ -107,27 +111,55 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Pegawai</h4>
+          <h4 class="modal-title">Tambah Pasien</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+
             <div class="card">
                 <div class="card-block">
-                  <form id="main" method="post" action="https://demo.dashboardpack.com/" novalidate>
+                  <form id="main" novalidate>
                     <div class="form-group row">
-                      <label class="col-sm-4 col-form-label">Nama Pegawai</label>
+                      <label class="col-sm-4 col-form-label">Nama Pasien</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pegawai">
+                        <input type="text" class="form-control" name="nama" id="nama_pasien" placeholder="Masukkan Nama Pasien">
                         <span class="messages"></span>
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">NIP</label>
+                        <label class="col-sm-4 col-form-label">kode Pasien</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="nip" id="nip" placeholder="Masukkan Nomor Induk Pegawai">
-                          <span class="messages"></span>
+                            <input type="text" class="form-control" name="nama" id="kode_pasien" placeholder="Masukkan Kode Pasien">
+                            <span class="messages"></span>
+                        </div>
+                    </div>
+                    {{-- <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Tanggal Masuk</label>
+                        <div class="col-sm-8">
+                            <input id="dropper-animation" class="form-control" type="text" placeholder="Tanggal Masuk" />
+                            <span class="messages"></span>
+                        </div>
+                    </div> --}}
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Waktu Masuk</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="time" id="waktu_masuk"/>
+                            <span class="messages"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Keterangan Layanan</label>
+                        <div class="col-sm-8">
+                            <select name="" id="jenis_layanan" class="form-control">
+                                <option value="0">:: Pilih Jenis Layanan ::</option>
+                                @foreach ($layanans as $layanan)
+                                    <option value="{{ $layanan->id }}">{{ $layanan->jenis_layanan }}</option>
+                                @endforeach
+                            </select>
+                            <span class="messages"></span>
                         </div>
                     </div>
                   </form>
@@ -147,7 +179,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Edit Pegawai</h4>
+          <h4 class="modal-title">Edit Pasien</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -155,22 +187,49 @@
         <div class="modal-body">
             <div class="card">
                 <div class="card-block">
-                  <form id="main" method="post" action="https://demo.dashboardpack.com/" novalidate>
-                    <input type="hidden" id="id_pegawai">
+                  <form id="main" novalidate>
+                    <input type="hidden" id="id_pasien">
                     <div class="form-group row">
-                      <label class="col-sm-4 col-form-label">Nama Pegawai</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="nama" id="edit_nama" placeholder="Masukkan Nama Pegawai">
-                        <span class="messages"></span>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">NIP</label>
+                        <label class="col-sm-4 col-form-label">Nama Pasien</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="nip" id="edit_nip" placeholder="Masukkan Nomor Induk Pegawai">
+                          <input type="text" class="form-control" name="nama" id="edit_nama_pasien" placeholder="Masukkan Nama Pasien">
                           <span class="messages"></span>
                         </div>
-                    </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">kode Pasien</label>
+                          <div class="col-sm-8">
+                              <input type="text" class="form-control" name="nama" id="edit_kode_pasien" placeholder="Masukkan Kode Pasien">
+                              <span class="messages"></span>
+                          </div>
+                      </div>
+                      {{-- <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Tanggal Masuk</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="date" id="edit_tanggal_masuk"/>
+                            <span class="messages"></span>
+                        </div>
+                    </div> --}}
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Waktu Masuk</label>
+                          <div class="col-sm-8">
+                              <input class="form-control" type="time" id="edit_waktu_masuk"/>
+                              <span class="messages"></span>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Keterangan Layanan</label>
+                          <div class="col-sm-8">
+                              <select name="" id="edit_jenis_layanan" class="form-control">
+                                  <option value="0">:: Pilih Jenis Layanan ::</option>
+                                  @foreach ($layanans as $layanan)
+                                      <option value="{{ $layanan->id }}">{{ $layanan->jenis_layanan }}</option>
+                                  @endforeach
+                              </select>
+                              <span class="messages"></span>
+                          </div>
+                      </div>
                   </form>
                 </div>
             </div>
@@ -211,5 +270,14 @@
     <script type="text/javascript" src="{{ asset('assets/assets/pages/form-validation/validate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/pages/form-validation/form-validation.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('pages/pegawai.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/assets/pages/advance-elements/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/datedropper/datedropper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/spectrum/spectrum.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/jscolor/jscolor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/assets/pages/advance-elements/custom-picker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/assets/pages/advance-elements/moment-with-locales.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('pages/pasien.js') }}"></script>
 @endsection

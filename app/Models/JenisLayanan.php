@@ -10,6 +10,8 @@ class JenisLayanan extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function pasien(): HasMany{
         return $this->hasMany(Pasien::class);
     }

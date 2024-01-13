@@ -34,7 +34,7 @@
                                     <li class="breadcrumb-item" style="float: left;">
                                         <a href="/"> <i class="feather icon-home"></i> </a>
                                     </li>
-                                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Daftar Pegawai</a></li>
+                                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Daftar Layanan</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                  <h5>Daftar Pegawai</h5>
+                                  <h5>Daftar Layanan</h5>
                                 </div>
                                 <div class="card-block">
                                   <div class="dt-responsive table-responsive">
@@ -54,28 +54,21 @@
                                       <thead>
                                         <tr>
                                             <th>No. </th>
-                                            <th>Pegawai</th>
-                                            <th>Username</th>
-                                            <th>Tanggal Registrasi</th>
+                                            <th>Jenis Layanan</th>
+                                            <th>Keterangan Layanan</th>
                                             <th>Aksi</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                         <?php $index = 1; ?>
-                                        @foreach ($pegawais as $pegawai)
+                                        @foreach ($layanans as $layanan)
                                             <tr>
                                                 <td>{{ $index++ }}</td>
+                                                <td>{{ $layanan->jenis_layanan }}</td>
+                                                <td>{{ $layanan->keterangan }}</td>
                                                 <td>
-                                                    {{ $pegawai->name }} <br>
-                                                    (<small>{{ $pegawai->nip }}</small>)
-                                                </td>
-                                                <td>{{ $pegawai->username }}</td>
-                                                <td>{{ $pegawai->created_at }}</td>
-                                                <td>
-                                                    <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $pegawai->id }}></i>
-                                                    <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $pegawai->id }}></i>
-                                                    {{-- <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
-                                                    <i class="fa fa-trash-o text-danger" aria-hidden="true"></i> --}}
+                                                    <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $layanan->id }}></i>
+                                                    <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $layanan->id }}></i>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -83,9 +76,8 @@
                                       <tfoot>
                                         <tr>
                                             <th>No. </th>
-                                            <th>Pegawai</th>
-                                            <th>Username</th>
-                                            <th>Tanggal Registrasi</th>
+                                            <th>Jenis Layanan</th>
+                                            <th>Keterangan Layanan</th>
                                             <th>Aksi</th>
                                         </tr>
                                       </tfoot>
@@ -107,7 +99,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Pegawai</h4>
+          <h4 class="modal-title">Tambah Jenis Layanan</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -115,19 +107,19 @@
         <div class="modal-body">
             <div class="card">
                 <div class="card-block">
-                  <form id="main" method="post" action="https://demo.dashboardpack.com/" novalidate>
+                  <form id="main" novalidate>
                     <div class="form-group row">
-                      <label class="col-sm-4 col-form-label">Nama Pegawai</label>
+                      <label class="col-sm-4 col-form-label">Jenis Layanan</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pegawai">
+                        <input type="text" class="form-control" name="nama" id="jenis_layanan" placeholder="Masukkan Jenis Layanan">
                         <span class="messages"></span>
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">NIP</label>
+                        <label class="col-sm-4 col-form-label">Keterangan Layanan</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="nip" id="nip" placeholder="Masukkan Nomor Induk Pegawai">
-                          <span class="messages"></span>
+                            <textarea id="keterangan_layanan" cols="30" rows="10" class="form-control" placeholder="Masukkan Keterangan Layanan"></textarea>
+                            <span class="messages"></span>
                         </div>
                     </div>
                   </form>
@@ -147,7 +139,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Edit Pegawai</h4>
+          <h4 class="modal-title">Edit Jenis Layanan</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -155,22 +147,22 @@
         <div class="modal-body">
             <div class="card">
                 <div class="card-block">
-                  <form id="main" method="post" action="https://demo.dashboardpack.com/" novalidate>
-                    <input type="hidden" id="id_pegawai">
+                  <form id="main" novalidate>
+                    <input type="hidden" id="id_layanan">
                     <div class="form-group row">
-                      <label class="col-sm-4 col-form-label">Nama Pegawai</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="nama" id="edit_nama" placeholder="Masukkan Nama Pegawai">
-                        <span class="messages"></span>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">NIP</label>
+                        <label class="col-sm-4 col-form-label">Jenis Layanan</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="nip" id="edit_nip" placeholder="Masukkan Nomor Induk Pegawai">
+                          <input type="text" class="form-control" name="nama" id="edit_jenis_layanan" placeholder="Masukkan Jenis Layanan">
                           <span class="messages"></span>
                         </div>
-                    </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Keterangan Layanan</label>
+                          <div class="col-sm-8">
+                              <textarea id="edit_keterangan_layanan" cols="30" rows="10" class="form-control" placeholder="Masukkan Keterangan Layanan"></textarea>
+                              <span class="messages"></span>
+                          </div>
+                      </div>
                   </form>
                 </div>
             </div>
@@ -211,5 +203,5 @@
     <script type="text/javascript" src="{{ asset('assets/assets/pages/form-validation/validate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/pages/form-validation/form-validation.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('pages/pegawai.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('pages/jenis_layanan.js') }}"></script>
 @endsection

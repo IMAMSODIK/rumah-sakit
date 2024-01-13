@@ -15,24 +15,36 @@
             </a>
           </li>
           <li class>
-            <a href="dashboard-crm.html">
+            <a href="/tahapan">
               <span class="pcoded-mtext">Tahapan</span>
             </a>
           </li>
           <li class>
-            <a href="dashboard-crm.html">
+            <a href="/jenis-layanan">
               <span class="pcoded-mtext">Jenis Layanan</span>
             </a>
           </li>
         </ul>
       </li>
-      <li class>
-        <a href="navbar-light.html">
+      <li class="pcoded-hasmenu">
+        <a href="javascript:void(0)">
           <span class="pcoded-micon">
             <i class="feather icon-monitor"></i>
           </span>
           <span class="pcoded-mtext">Monitoring</span>
         </a>
+        <ul class="pcoded-submenu">
+            <li>
+              <a href="/pasien">
+                <span class="pcoded-mtext">Tambah Data</span>
+              </a>
+            </li>
+            <li class>
+              <a href="/monitor">
+                <span class="pcoded-mtext">Monitor</span>
+              </a>
+            </li>
+          </ul>
       </li>
     </ul>
     <div class="pcoded-navigatio-lavel">Support</div>

@@ -1,8 +1,10 @@
 let data_table;
 
 function clearFields(){
-    $("#nama").val("");
-    $("#nip").val("");
+    $("#jam_pertama").val("");
+    $("#jam_kedua").val("");
+    $("#jam_ketiga").val("");
+    $("#jam_keempat").val("");
 }
 
 $(document).ready(function() {
@@ -22,64 +24,16 @@ $(".close-btn").on("click", function(){
     clearFields();
 })
 
-$("#store").on("click", function(){
-    $("#large-Modal").modal('hide');
-    let nama_pegawai = $("#nama").val(),
-        nip = $("#nip").val();
-
-    $.ajax({
-        url: '/pegawai/store-data',
-        method: 'POST',
-        data: {
-            "_token": $("meta[name='csrf-token']").attr('content'),
-            "nama_pegawai": nama_pegawai,
-            "nip": nip
-        },
-        success: function(response){
-            if(response.status){
-                Swal.fire({
-                    title: 'Success',
-                    text: "Berhasil Menambahkan Data!",
-                    icon: 'success',
-                    confirmButtonText: 'Oke'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                        location.reload();
-                    }
-                })
-            }else{
-                Swal.fire({
-                    title: 'Oops..',
-                    text: `${response.message}`,
-                    icon: 'error',
-                    confirmButtonText: 'Oke'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                        $("#large-Modal").modal('show');
-                    }
-                })
-            }
-        },
-        error: function(response){
-            console.log(response);
-        }
-    })
-})
-
 $(".edit").on('click', function(){
-    let id = $(this).data('id');
-
     $.ajax({
-        url: '/pegawai/edit-data',
+        url: '/tahapan/edit-data',
         method: 'GET',
-        data: {
-            "id": id
-        },
         success: function(response){
             if(response.status){
-                $("#id_pegawai").val(response.data.id);
-                $("#edit_nama").val(response.data.name);
-                $("#edit_nip").val(response.data.nip);
+                $("#jam_pertama").val(response.data.jam_pertama);
+                $("#jam_kedua").val(response.data.jam_kedua);
+                $("#jam_ketiga").val(response.data.jam_ketiga);
+                $("#jam_keempat").val(response.data.jam_keempat);
             }else{
                 Swal.fire({
                     title: 'Oops..',
@@ -103,13 +57,14 @@ $(".edit").on('click', function(){
 $("#update").on('click', function(){
     $("#edit-Modal").modal('hide');
     $.ajax({
-        url: '/pegawai/update-data',
+        url: '/tahapan/update-data',
         method: 'POST',
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
-            "id": $("#id_pegawai").val(),
-            "nama_pegawai": $("#edit_nama").val(),
-            "nip": $("#edit_nip").val()
+            "jam_pertama": $("#jam_pertama").val(),
+            "jam_kedua": $("#jam_kedua").val(),
+            "jam_ketiga": $("#jam_ketiga").val(),
+            "jam_keempat": $("#jam_keempat").val(),
         },
         success: function(response){
             if(response.status){
