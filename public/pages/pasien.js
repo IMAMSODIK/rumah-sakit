@@ -22,6 +22,17 @@ $(".close-btn").on("click", function(){
     clearFields();
 })
 
+$(".waves-effect").on("click", function(){
+    let currentTime = new Date();
+    let currentHours = currentTime.getHours();
+    let currentMinutes = currentTime.getMinutes();
+    let formattedHours = currentHours < 10 ? '0' + currentHours : currentHours;
+    let formattedMinutes = currentMinutes < 10 ? '0' + currentMinutes : currentMinutes;
+    let currentTimeString = formattedHours + ':' + formattedMinutes;
+
+    document.getElementById('waktu_masuk').value = currentTimeString;
+})
+
 $("#store").on("click", function(){
     let nama_pasien = $("#nama_pasien").val(),
         kode_pasien = $("#kode_pasien").val(),

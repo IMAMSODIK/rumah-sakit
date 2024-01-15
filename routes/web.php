@@ -3,10 +3,12 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisLayananController;
+use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\TahapanController;
 use App\Http\Controllers\UserController;
+use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/pasien/edit-data', [PasienController::class, 'edit']);
     Route::post('/pasien/update-data', [PasienController::class, 'update']);
     Route::post('/pasien/delete-data', [PasienController::class, 'delete']);
+
+    Route::get('/monitor', [MonitorController::class, 'index']);
+    Route::get('/monitor/load-data', [MonitorController::class, 'loadData']);
 });
 
 Route::middleware('guest')->group(function () {

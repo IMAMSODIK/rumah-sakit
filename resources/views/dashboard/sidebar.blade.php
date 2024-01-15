@@ -40,7 +40,7 @@
               </a>
             </li>
             <li class>
-              <a href="/monitor">
+              <a href="/monitor" target="_blank">
                 <span class="pcoded-mtext">Monitor</span>
               </a>
             </li>

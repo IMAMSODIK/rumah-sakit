@@ -107,7 +107,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-8 col-md-12">
+              {{-- <div class="col-xl-8 col-md-12">
                 <div class="card">
                   <div class="card-header">
                     <h5>Visitors</h5>
@@ -456,7 +456,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
