@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('waktu_masuk');
             $table->foreignId('jenis_layanan_id');
+            $table->tinyInteger('tahap')->default(1);
             $table->timestamps();
         });
     }

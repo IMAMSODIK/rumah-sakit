@@ -52,7 +52,7 @@
                 <i class="feather icon-menu"></i>
               </a>
               <a href="/">
-                <img class="img-fluid" src="{{ asset('assets/assets/images/logo.png') }}" alt="Theme-Logo" />
+                <img class="img-fluid" src="{{ asset('my_assets/images/logo.png') }}" alt="Theme-Logo" width="50px"/>
               </a>
               <a class="mobile-options">
                 <i class="feather icon-more-horizontal"></i>
@@ -128,7 +128,6 @@
                   <div class="dropdown-primary dropdown">
                     <div class="dropdown-toggle" data-toggle="dropdown">
                       <img src="{{ (session('user')->foto) ? asset('file_upload/user_image') . '/' . session('user')->foto : asset('my_assets/images/no_pict.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                      {{ session('user')->foto }}
                       <span>{{ session('user')->name }}</span>
                       <i class="feather icon-chevron-down"></i>
                     </div>

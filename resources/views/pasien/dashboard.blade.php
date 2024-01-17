@@ -82,6 +82,7 @@
 
     <div class="sample-header">
         <div class="sample-header-section text-center">
+            <img class="img-fluid" src="{{ asset('my_assets/images/logo.png') }}" alt="Theme-Logo" width="150px" style="margin-bottom: 50px"/>
             <h1>INFORMASI MONITORING PASIEN IGD RSUPD Dr. SARDJITO</h1>
             <h2 id="tanggal"></h2>
         </div>

@@ -8,11 +8,11 @@
                 <div class="col-sm-12">
                     <form class="md-float-material form-material" method="post" action="/login-check">
                         {{ csrf_field() }}
-                        <div class="text-center"><img src="{{ asset('assets/assets/images/logo.png') }}" alt="logo.png"></div>
+                        <div class="text-center"><img src="{{ asset('my_assets/images/logo.png') }}" alt="logo.png" width="100px"></div>
                         <div class="auth-box card">
                             <div class="card-block">
                                 <div class="row m-b-20">
-                                    <div class="col-md-12"><h3 class="text-center">Sign In</h3></div>
+                                    <div class="col-md-12"><h3 class="text-center">Login</h3></div>
                                 </div>
                                 <div class="form-group form-primary">
                                     <input type="text" name="username" class="form-control" required placeholder="Masukkan Username">
@@ -32,25 +32,16 @@
                                             </label>
                                         </div>
                                         <div class="forgot-phone text-right f-right">
-                                            <a href="auth-reset-password.html" class="text-right f-w-600"> Forgot Password?</a>
+                                            <a href="auth-reset-password.html" class="text-right f-w-600"> Lupa Password?</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Log in</button>
                                     </div>
                                 </div>
                                 <hr/>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                        <p class="text-inverse text-left"><a href="../index.html"><b class="f-w-600">Back to website</b></a></p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="{{ asset('assets/assets/images/auth/Logo-small-bottom.png') }}" alt="small-logo.png">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </form>

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tahapans', function (Blueprint $table) {
             $table->id();
-            $table->double('jam_pertama');
-            $table->double('jam_kedua');
-            $table->double('jam_ketiga');
-            $table->double('jam_keempat');
+            $table->string('jam_pertama');
+            $table->string('jam_kedua');
+            $table->string('jam_ketiga');
+            $table->string('jam_keempat');
             $table->timestamps();
         });
     }

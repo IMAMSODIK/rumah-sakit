@@ -64,10 +64,10 @@
                                       <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>{{ $tahapan->jam_pertama }} Jam</td>
-                                            <td>{{ $tahapan->jam_kedua }} Jam</td>
-                                            <td>{{ $tahapan->jam_ketiga }} Jam</td>
-                                            <td>{{ $tahapan->jam_keempat }} Jam</td>
+                                            <td>{{ $tahapan->jam_pertama }}</td>
+                                            <td>{{ $tahapan->jam_kedua }}</td>
+                                            <td>{{ $tahapan->jam_ketiga }}</td>
+                                            <td>{{ $tahapan->jam_keempat }}</td>
                                             <td>
                                                 <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $tahapan->id }}></i>
                                             </td>
@@ -113,7 +113,7 @@
                     <div class="form-group row">
                       <label class="col-sm-4 col-form-label">Jam Pertama</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="jam_pertama" placeholder="Masukkan Jam Pertama">
+                        <input type="time" class="form-control" id="jam_pertama" placeholder="Masukkan Jam Pertama">
                         <span class="messages"></span>
                       </div>
                     </div>
@@ -121,7 +121,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Jam Kedua</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="jam_kedua" placeholder="Masukkan Jam Kedua">
+                          <input type="time" class="form-control" id="jam_kedua" placeholder="Masukkan Jam Kedua">
                           <span class="messages"></span>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Jam Ketiga</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="jam_ketiga" placeholder="Masukkan Jam Ketiga">
+                            <input type="time" class="form-control" id="jam_ketiga" placeholder="Masukkan Jam Ketiga">
                             <span class="messages"></span>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Jam Keempat</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="jam_keempat" placeholder="Masukkan Jam Keempat">
+                            <input type="time" class="form-control" id="jam_keempat" placeholder="Masukkan Jam Keempat">
                             <span class="messages"></span>
                         </div>
                     </div>

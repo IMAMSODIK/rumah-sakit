@@ -33,6 +33,11 @@ class TahapanController extends Controller
         ]);
     }
 
+    public function parseJam($jam){
+        $explode = explode(":", $jam);
+        return $explode[0]." Jam ".$explode[1]." Menit ";
+    }
+
     public function update(Request $r){
         $messages = [
             'required' => 'Kolom :attribute harus diisikan',
@@ -52,10 +57,10 @@ class TahapanController extends Controller
         ];
 
         $rules = [
-            'jam_pertama' => 'required|numeric',
-            'jam_kedua' => 'required|numeric',
-            'jam_ketiga' => 'required|numeric',
-            'jam_keempat' => 'required|numeric',
+            'jam_pertama' => 'required|string',
+            'jam_kedua' => 'required|string',
+            'jam_ketiga' => 'required|string',
+            'jam_keempat' => 'required|string',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -69,14 +74,10 @@ class TahapanController extends Controller
 
 
         try {
-            $data = Tahapan::first();
+            $model = Tahapan::first();
 
-            if($data){
-                $data->jam_pertama = $r->jam_pertama;
-                $data->jam_kedua = $r->jam_kedua;
-                $data->jam_ketiga = $r->jam_ketiga;
-                $data->jam_keempat = $r->jam_keempat;
-                $data->save();
+            if($model){
+                $model->update($data);
 
                 return response()->json([
                     'status' => true

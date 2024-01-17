@@ -15,59 +15,30 @@ class PasienSeeder extends Seeder
     {
         Pasien::create([
             'kode' => '0001',
-            'nama' => 'Imam Sodik',
+            'nama' => 'Alex Nander',
             'waktu_masuk' => '19:20',
             'jenis_layanan_id' => 1
         ]);
 
         Pasien::create([
             'kode' => '0002',
-            'nama' => 'Imam Sodik 2',
+            'nama' => 'Alex Nander 2',
             'waktu_masuk' => '19:10',
             'jenis_layanan_id' => 1
         ]);
         Pasien::create([
             'kode' => '0001',
-            'nama' => 'Imam Sodik',
+            'nama' => 'Firman Utina',
             'waktu_masuk' => '15:20',
             'jenis_layanan_id' => 1
         ]);
         Pasien::create([
             'kode' => '0001',
-            'nama' => 'Imam Sodik',
+            'nama' => 'Firman Utina 2',
             'waktu_masuk' => '12:20',
             'jenis_layanan_id' => 1
         ]);
-        Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Imam Sodik',
-            'waktu_masuk' => '10:20',
-            'jenis_layanan_id' => 1
-        ]);
-        Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Imam Sodik',
-            'waktu_masuk' => '07:20',
-            'jenis_layanan_id' => 2
-        ]);
-        Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Imam Sodik',
-            'waktu_masuk' => '02:20',
-            'jenis_layanan_id' => 2
-        ]);
-        Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Imam Sodik',
-            'waktu_masuk' => '05:20',
-            'jenis_layanan_id' => 2
-        ]);
-        Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Imam Sodik',
-            'waktu_masuk' => '00:00',
-            'jenis_layanan_id' => 2
-        ]);
+
         Pasien::create([
             'kode' => '0001',
             'nama' => 'Imam Sodik',
@@ -76,7 +47,7 @@ class PasienSeeder extends Seeder
         ]);
         Pasien::create([
             'kode' => '0001',
-            'nama' => 'Imam Sodik',
+            'nama' => 'Imam Sodik 2',
             'waktu_masuk' => '15:20',
             'jenis_layanan_id' => 2
         ]);
