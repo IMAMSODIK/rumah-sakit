@@ -17,6 +17,10 @@ class Pasien extends Model
         return $this->hasOne(StatusPasien::class);
     }
 
+    public function layanan(): HasOne{
+        return $this->hasOne(Layanan::class);
+    }
+
     public function jenisLayanan(): BelongsTo{
         return $this->belongsTo(JenisLayanan::class);
     }

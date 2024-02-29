@@ -11,12 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class PasienController extends Controller
 {
     public function index(){
-        $pasiens = Pasien::all();
-        $layanans = JenisLayanan::select('id', 'jenis_layanan')->get();
+        $pasiens = Pasien::with('layanan')->get();
 
         return view('pasien.index', [
-            'pasiens' => $pasiens,
-            'layanans' => $layanans
+            'pasiens' => $pasiens
         ]);
     }
 
@@ -32,16 +30,14 @@ class PasienController extends Controller
 
         $data = [
             "nama" => $r->nama,
-            "kode" => $r->kode,
-            "waktu_masuk" => $r->waktu_masuk,
-            "jenis_layanan_id" => $r->jenis_layanan,
+            "usia" => $r->usia,
+            "no_rekam_medis" => $r->no_rekam_medis,
         ];
 
         $rules = [
             'nama' => 'required|string|max:255',
-            'kode' => 'required|string|max:255|unique:pasiens',
-            'waktu_masuk' => 'required',
-            'jenis_layanan_id' => 'required'
+            'usia' => 'required|string|max:255',
+            'no_rekam_medis' => 'required|string|max:255',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -91,6 +87,22 @@ class PasienController extends Controller
         ]);
     }
 
+    public function editLayanan(Request $r){
+        $data = Pasien::with('layanan')->where('id', $r->id)->first();
+
+        if($data){
+            return response()->json([
+                'status' => true,
+                'data' => $data
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => "Gagal memuat data"
+        ]);
+    }
+
     public function update(Request $r){
         $messages = [
             'required' => 'Kolom :attribute harus diisikan',
@@ -103,16 +115,14 @@ class PasienController extends Controller
 
         $data = [
             "nama" => $r->nama,
-            "kode" => $r->kode,
-            "waktu_masuk" => $r->waktu_masuk,
-            "jenis_layanan_id" => $r->jenis_layanan,
+            "usia" => $r->usia,
+            "no_rekam_medis" => $r->no_rekam_medis,
         ];
 
         $rules = [
             'nama' => 'required|string|max:255',
-            'kode' => 'required|string|max:255|unique:pasiens',
-            'waktu_masuk' => 'required',
-            'jenis_layanan_id' => 'required'
+            'usia' => 'required|string|max:255',
+            'no_rekam_medis' => 'required|string|max:255',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -128,10 +138,9 @@ class PasienController extends Controller
             $data = Pasien::where('id', $r->id)->first();
 
             if($data){
-                $data->kode = $r->kode;
                 $data->nama = $r->nama;
-                $data->waktu_masuk = $r->waktu_masuk;
-                $data->jenis_layanan_id = $r->jenis_layanan;
+                $data->usia = $r->usia;
+                $data->no_rekam_medis = $r->no_rekam_medis;
                 $data->save();
 
                 return response()->json([

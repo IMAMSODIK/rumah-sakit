@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisLayananController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PegawaiController;
@@ -47,8 +48,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/pasien', [PasienController::class, 'index']);
     Route::post('/pasien/store-data', [PasienController::class, 'store']);
     Route::get('/pasien/edit-data', [PasienController::class, 'edit']);
+    Route::get('/pasien/edit-layanan', [PasienController::class, 'editLayanan']);
     Route::post('/pasien/update-data', [PasienController::class, 'update']);
     Route::post('/pasien/delete-data', [PasienController::class, 'delete']);
+    Route::post('/pasien/update-status-layanan', [LayananController::class, 'updateLayanan']);
 
     Route::get('/monitor', [MonitorController::class, 'index']);
     Route::get('/monitor/load-data', [MonitorController::class, 'loadData']);

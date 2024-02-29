@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
             $table->string('nama');
-            $table->string('waktu_masuk');
-            $table->foreignId('jenis_layanan_id');
-            $table->tinyInteger('tahap')->default(1);
+            $table->tinyInteger('usia');
+            $table->string('no_rekam_medis');
             $table->timestamps();
         });
     }

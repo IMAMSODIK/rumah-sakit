@@ -15,6 +15,11 @@
             </a>
           </li>
           <li class>
+            <a href="/pasien">
+              <span class="pcoded-mtext">Pasien</span>
+            </a>
+          </li>
+          {{-- <li class>
             <a href="/tahapan">
               <span class="pcoded-mtext">Tahapan</span>
             </a>
@@ -23,10 +28,10 @@
             <a href="/jenis-layanan">
               <span class="pcoded-mtext">Jenis Layanan</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li>
-      <li class="pcoded-hasmenu">
+      {{-- <li class="pcoded-hasmenu">
         <a href="javascript:void(0)">
           <span class="pcoded-micon">
             <i class="feather icon-monitor"></i>
@@ -45,7 +50,7 @@
               </a>
             </li>
           </ul>
-      </li>
+      </li> --}}
     </ul>
     <div class="pcoded-navigatio-lavel">Support</div>
     <ul class="pcoded-item pcoded-left-item">

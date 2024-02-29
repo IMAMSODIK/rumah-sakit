@@ -14,42 +14,31 @@ class PasienSeeder extends Seeder
     public function run(): void
     {
         Pasien::create([
-            'kode' => '0001',
             'nama' => 'Alex Nander',
-            'waktu_masuk' => '19:20',
-            'jenis_layanan_id' => 1
+            'usia' => 45,
+            'no_rekam_medis' => '0001'
         ]);
 
         Pasien::create([
-            'kode' => '0002',
-            'nama' => 'Alex Nander 2',
-            'waktu_masuk' => '19:10',
-            'jenis_layanan_id' => 1
+            'nama' => 'Adriano Pakpahan',
+            'usia' => 54,
+            'no_rekam_medis' => '0002'
         ]);
         Pasien::create([
-            'kode' => '0001',
             'nama' => 'Firman Utina',
-            'waktu_masuk' => '15:20',
-            'jenis_layanan_id' => 1
+            'usia' => 62,
+            'no_rekam_medis' => '0003'
         ]);
         Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Firman Utina 2',
-            'waktu_masuk' => '12:20',
-            'jenis_layanan_id' => 1
+            'nama' => 'Zulham Zamrun',
+            'usia' => 45,
+            'no_rekam_medis' => '0004'
         ]);
 
         Pasien::create([
-            'kode' => '0001',
             'nama' => 'Imam Sodik',
-            'waktu_masuk' => '23:20',
-            'jenis_layanan_id' => 2
-        ]);
-        Pasien::create([
-            'kode' => '0001',
-            'nama' => 'Imam Sodik 2',
-            'waktu_masuk' => '15:20',
-            'jenis_layanan_id' => 2
+            'usia' => 23,
+            'no_rekam_medis' => '0005'
         ]);
     }
 }
